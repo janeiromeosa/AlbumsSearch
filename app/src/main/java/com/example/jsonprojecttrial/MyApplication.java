@@ -1,4 +1,23 @@
 package com.example.jsonprojecttrial;
 
-public class MyApplication {
+import android.app.Application;
+
+import com.example.jsonprojecttrial.di.app.AppComponent;
+import com.example.jsonprojecttrial.di.app.DaggerAppComponent;
+
+public class MyApplication extends Application {
+
+    private AppComponent appComponent;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        appComponent = DaggerAppComponent.builder()
+                .application(this)
+                .build();
+    }
+
+    public AppComponent getAppComponent(){
+        return appComponent;
+    }
 }

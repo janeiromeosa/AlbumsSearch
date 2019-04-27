@@ -1,4 +1,4 @@
-package com.example.jsonprojecttrial.di.home;
+package com.example.jsonprojecttrial.home;
 
 class HomeActivity {
 }

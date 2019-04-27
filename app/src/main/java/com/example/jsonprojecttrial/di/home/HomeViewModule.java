@@ -2,7 +2,7 @@ package com.example.jsonprojecttrial.di.home;
 
 import android.arch.lifecycle.ViewModelProviders;
 
-import com.example.jsonprojecttrial.MainActivity;
+import com.example.jsonprojecttrial.home.MainActivity;
 import com.example.jsonprojecttrial.di.app.Repository;
 import com.example.jsonprojecttrial.home.HomeViewModel;
 import com.example.jsonprojecttrial.home.HomeViewModelFactory;
@@ -14,24 +14,25 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class HomeViewFactoryModule {
+public class HomeViewModule {
 
-    private final MainActivity homeActivity;
+    private final MainActivity mainActivity;
 
-    public HomeViewFactoryModule(MainActivity homeActivity) {
-        this.homeActivity = homeActivity;
+    public HomeViewModule(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
     }
 
 
     @Provides
-    @Singleton
+    @HomeViewScope
     public HomeViewModelFactory provideHomeViewModelFactory(@Repository DataSource albumsRepository) {
         return new HomeViewModelFactory(albumsRepository);
     }
 
     @Provides
+    @HomeViewScope
     public HomeViewModel provideHomeViewModel(HomeViewModelFactory homeViewModelFactory){
-        return ViewModelProviders.of(homeActivity, homeViewModelFactory).get(HomeViewModel.class);
+        return ViewModelProviders.of(mainActivity, homeViewModelFactory).get(HomeViewModel.class);
     }
 
 }

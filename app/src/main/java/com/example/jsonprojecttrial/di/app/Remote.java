@@ -1,4 +1,4 @@
-package com.example.jsonholderalbums.di;
+package com.example.jsonprojecttrial.di.app;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
